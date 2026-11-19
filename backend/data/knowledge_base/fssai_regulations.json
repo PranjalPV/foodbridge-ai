@@ -1,0 +1,71 @@
+{
+  "source": "Food Safety and Standards Authority of India (FSSAI)",
+  "regulation": "Food Safety and Standards (Recovery and Distribution of Surplus Food) Regulations, 2019",
+  "gazette_reference": "F. No. Stds/SP(Water & Beverages)/Misc(2)/FSSAI-2018",
+  "documents": [
+    {
+      "id": "FSSAI-REG-001",
+      "title": "Core Responsibilities of Food Donors (FBOs)",
+      "category": "compliance",
+      "section": "Regulation 3 & Schedule I",
+      "content": "Any Food Business Operator (FBO) or food donor shall donate only safe surplus food that has not been served to customers. Surplus food must not be distributed if it is unsafe, expired, contaminated, or shows any signs of spoilage. Donors must inform the Surplus Food Distribution Organisation (SFDO) sufficiently in advance so that food can be retrieved, safely transported, and distributed within its safe consumption window. Donors acting in good faith without negligence are protected under Good Samaritan provisions.",
+      "keywords": ["donor", "responsibility", "good faith", "safe food", "unserved", "spoilage"]
+    },
+    {
+      "id": "FSSAI-REG-002",
+      "title": "Temperature Danger Zone and Holding Guidelines",
+      "category": "temperature",
+      "section": "Schedule I, Clause 2(b)",
+      "content": "The microbial danger zone is defined as temperatures between 5°C and 60°C (41°F to 140°F), where foodborne pathogens like Salmonella, Bacillus cereus, and Staphylococcus aureus rapidly multiply. Cooked surplus food intended for hot distribution must be kept continuously at or above 60°C (preferably 65°C) until collection. Perishable cold food must be maintained continuously at or below 5°C (maximum 7°C during transient distribution). Surplus food lingering in the danger zone for more than 4 hours must not be redistributed for human consumption.",
+      "keywords": ["danger zone", "temperature", "hot holding", "cold holding", "60C", "5C", "spoilage"]
+    },
+    {
+      "id": "FSSAI-REG-003",
+      "title": "The 2-Hour / 4-Hour Safety Protocol for Cooked Food",
+      "category": "spoilage_kinetics",
+      "section": "FSSAI Safe Food Handover Standard Operating Procedure",
+      "content": "For perishable cooked foods held in ambient room temperature (between 5°C and 60°C): If total exposure time since preparation is less than 2 hours, food may be either chilled to under 5°C, reheated to above 75°C, or delivered immediately. If total ambient exposure is between 2 and 4 hours, food must be consumed immediately and cannot be re-chilled or stored. If total ambient exposure exceeds 4 hours, food must be discarded and deemed unfit for donation due to dangerous bacterial enterotoxin risk.",
+      "keywords": ["2 hour rule", "4 hour rule", "ambient", "shelf life", "decay", "spoilage", "holding time"]
+    },
+    {
+      "id": "FSSAI-REG-004",
+      "title": "High-Risk vs Medium-Risk Surplus Food Categorization",
+      "category": "risk_assessment",
+      "section": "Schedule I, Food Classification Matrix",
+      "content": "High-Risk Foods include cooked rice, biryani, khichdi (susceptible to Bacillus cereus spore toxins), dairy products, paneer curries, milk-based sweets, gravies with cream/cashew paste, and cooked meats. High-risk foods have a maximum ambient shelf life of 2 to 3.5 hours depending on ambient temperature. Medium-Risk Foods include cooked dal (lentils), pasta, cooked vegetable dry dishes, and cut fruits (safe window 3 to 5 hours). Low-Risk Foods include dry chapatis, rotis, bakery breads, dry snacks, and uncut whole fruits (safe shelf life 12 to 24 hours at ambient dry conditions).",
+      "keywords": ["high risk", "rice", "biryani", "dairy", "paneer", "meat", "dal", "shelf life", "risk category"]
+    },
+    {
+      "id": "FSSAI-REG-005",
+      "title": "Segregation of Vegetarian and Non-Vegetarian Food",
+      "category": "packaging_and_labeling",
+      "section": "Schedule I, Clause 4",
+      "content": "Strict physical segregation must be maintained between vegetarian and non-vegetarian surplus food at all stages including storage, packaging, transportation, and serving. Dedicated, non-porous food-grade containers must be used. Containers must display visible color-coded labeling: Green dot for Vegetarian and Red/Brown dot for Non-Vegetarian, along with clear allergen markings (nuts, dairy, gluten, shellfish).",
+      "keywords": ["vegetarian", "non-vegetarian", "segregation", "cross contamination", "packaging", "labeling", "allergens"]
+    },
+    {
+      "id": "FSSAI-REG-006",
+      "title": "Reheating and Final Consumption Safeguards",
+      "category": "consumption_safety",
+      "section": "Schedule I, Clause 6",
+      "content": "Surplus cooked food must only be reheated once. Repeated reheating degrades nutritional quality and triggers bacterial toxin development. Reheating must reach a core temperature of at least 75°C (167°F) for a minimum of 2 minutes throughout the food mass before serving. Leftover surplus food from an event or distribution that was already served or opened at the table cannot be collected or re-donated.",
+      "keywords": ["reheating", "75C", "core temperature", "serving", "consumption", "nutritional quality"]
+    },
+    {
+      "id": "FSSAI-REG-007",
+      "title": "Hygienic Transportation and Volunteer Guidelines",
+      "category": "logistics",
+      "section": "Regulation 4 & Schedule I, Clause 5",
+      "content": "Vehicles and transport containers used by volunteers or SFDOs must be clean, sanitized, and dedicated to food transport. Insulated thermal carriers or cooler bags must be utilized to maintain hot food >= 60°C and cold food <= 7°C during transit. Volunteers must maintain personal hygiene (sanitized hands, hair cover, clean aprons) and must not handle food if suffering from gastrointestinal, respiratory, or skin infections.",
+      "keywords": ["transportation", "volunteer", "thermal carrier", "vehicle", "hygiene", "delivery"]
+    },
+    {
+      "id": "FSSAI-REG-008",
+      "title": "Environmental Impact and Carbon Offset Equivalencies",
+      "category": "sustainability",
+      "section": "UNEP / FAO Food Rescue Ecological Metrics",
+      "content": "According to FAO and UNEP environmental accounting standards: Every 1 kg of food diverted from municipal landfills avoids 2.5 kg of CO2 equivalent greenhouse gas emissions (predominantly methane CH4, which has 28 times the global warming potential of carbon dioxide over 100 years). Rescuing a single meal (~400 grams) avoids approximately 1.0 kg CO2e emissions and conserves approximately 150 liters of embedded agricultural water footprint.",
+      "keywords": ["carbon", "co2", "methane", "emissions", "environment", "unep", "fao", "impact", "sustainability"]
+    }
+  ]
+}

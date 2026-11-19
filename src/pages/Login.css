@@ -209,3 +209,73 @@
 .back-home:hover {
     color: #299257;
 }
+
+/* Role Switcher & Demo Login Pills */
+.role-switch-pills {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    background: #f0fdf4;
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid #d1fae5;
+}
+
+.role-pill {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px 6px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #065f46;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.role-pill.active {
+    background: #10b981;
+    color: white;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.demo-login-box {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.demo-login-box small {
+    display: block;
+    margin-bottom: 8px;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.demo-btns {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.demo-btns button {
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.demo-btns button:hover {
+    background: #f3f4f6;
+    border-color: #10b981;
+    color: #065f46;
+}

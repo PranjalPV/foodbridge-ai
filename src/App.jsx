@@ -16,6 +16,7 @@ import MyPickups from "./pages/volunteer/MyPickups";
 import History from "./pages/volunteer/History";
 import VolunteerMap from "./pages/volunteer/VolunteerMap";
 import MyImpact from "./pages/volunteer/MyImpact";
+import BridgeBot from "./components/BridgeBot";
 
 function App() {
   return (
@@ -87,11 +88,14 @@ function App() {
         />
 
         <Route
-    path="/impact"
-    element={<MyImpact />}
-/>
+          path="/impact"
+          element={<MyImpact />}
+        />
 
       </Routes>
+
+      {/* Floating AI Assistant grounded in FSSAI regulations */}
+      <BridgeBot />
 
     </BrowserRouter>
   );

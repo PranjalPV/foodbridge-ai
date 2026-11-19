@@ -1,11 +1,12 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import "./Register.css";
 
 function Register() {
-
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
 
-    const role = searchParams.get("role");
+    const role = searchParams.get("role") || "restaurant";
 
     const roleNames = {
         restaurant: "Restaurant",
@@ -13,221 +14,141 @@ function Register() {
         volunteer: "Volunteer"
     };
 
-    const selectedRole = roleNames[role];
+    const selectedRole = roleNames[role] || "User";
 
-    // Agar koi invalid role ke saath register page open kare
-    if (!selectedRole) {
-        return (
-            <div className="invalid-role">
-                <h2>Please select a valid role.</h2>
+    const [fullName, setFullName] = useState("");
+    const [orgName, setOrgName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [location, setLocation] = useState("Lucknow");
+    const [password, setPassword] = useState("");
 
-                <Link to="/roles">
-                    Choose Role
-                </Link>
-            </div>
-        );
-    }
+    const handleRegisterSubmit = (e) => {
+        e.preventDefault();
 
+        const displayName = orgName || fullName || `${selectedRole} User`;
+        const userData = {
+            name: displayName,
+            email: email || `${role}@foodbridge.org`,
+            phone,
+            location,
+            role,
+            token: `fb_jwt_${Date.now()}`
+        };
+
+        localStorage.setItem("foodbridge_user", JSON.stringify(userData));
+        alert(`Account created successfully! Welcome to FoodBridge AI, ${displayName}.`);
+        navigate(`/dashboard/${role}`);
+    };
 
     return (
         <div className="register-page">
-
             <div className="register-card">
-
-                {/* Logo */}
-
                 <div className="register-logo">
                     🌱 FoodBridge <span>AI</span>
                 </div>
 
-
-                {/* Heading */}
-
-                <h1>
-                    Create Your Account
-                </h1>
-
+                <h1>Create Your Account</h1>
                 <p className="register-subtitle">
                     Register as a {selectedRole}
                 </p>
 
-
-                <form>
-
-                    {/* Common field */}
-
+                <form onSubmit={handleRegisterSubmit}>
                     <div className="form-group">
-
-                        <label>Full Name</label>
-
+                        <label>Your Full Name</label>
                         <input
                             type="text"
-                            placeholder="Enter your full name"
+                            placeholder="e.g. Rahul Sharma"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            required
                         />
-
                     </div>
 
-
-                    {/* Restaurant specific */}
-
                     {role === "restaurant" && (
-
                         <div className="form-group">
-
-                            <label>Restaurant Name</label>
-
+                            <label>Restaurant / Kitchen Name</label>
                             <input
                                 type="text"
-                                placeholder="Enter restaurant name"
+                                placeholder="e.g. Royal Spice Grand"
+                                value={orgName}
+                                onChange={(e) => setOrgName(e.target.value)}
+                                required
                             />
-
                         </div>
-
                     )}
-
-
-                    {/* NGO specific */}
 
                     {role === "ngo" && (
-
                         <div className="form-group">
-
-                            <label>NGO Name</label>
-
+                            <label>NGO / Shelter Name</label>
                             <input
                                 type="text"
-                                placeholder="Enter NGO name"
+                                placeholder="e.g. Asha Children Trust"
+                                value={orgName}
+                                onChange={(e) => setOrgName(e.target.value)}
+                                required
                             />
-
                         </div>
-
                     )}
-
-
-                    {/* Volunteer specific */}
-
-                    {role === "volunteer" && (
-
-                        <div className="form-group">
-
-                            <label>Age</label>
-
-                            <input
-                                type="number"
-                                placeholder="Enter your age"
-                            />
-
-                        </div>
-
-                    )}
-
-
-                    {/* Email */}
 
                     <div className="form-group">
-
-                        <label>Email</label>
-
+                        <label>Email Address</label>
                         <input
                             type="email"
                             placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
-
                     </div>
 
-
-                    {/* Phone */}
-
                     <div className="form-group">
-
                         <label>Phone Number</label>
-
                         <input
                             type="tel"
-                            placeholder="Enter your phone number"
+                            placeholder="+91 98765 43210"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
                         />
-
                     </div>
 
-
-                    {/* Location */}
-
                     <div className="form-group">
-
-                        <label>Location</label>
-
+                        <label>Operating City / Location</label>
                         <input
                             type="text"
-                            placeholder="Enter your location"
+                            placeholder="e.g. Hazratganj, Lucknow"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            required
                         />
-
                     </div>
 
-
-                    {/* Password */}
-
                     <div className="form-group">
-
                         <label>Password</label>
-
                         <input
                             type="password"
                             placeholder="Create a password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
-
                     </div>
 
-
-                    {/* Confirm Password */}
-
-                    <div className="form-group">
-
-                        <label>Confirm Password</label>
-
-                        <input
-                            type="password"
-                            placeholder="Confirm your password"
-                        />
-
-                    </div>
-
-
-                    {/* Submit */}
-
-                    <button
-                        type="submit"
-                        className="register-btn"
-                    >
-                        Create Account
+                    <button type="submit" className="register-btn">
+                        Complete Registration as {selectedRole} →
                     </button>
-
                 </form>
 
-
-                {/* Login */}
-
                 <p className="login-text">
-
-                    Already have an account?
-
-                    <Link to="/login">
-                        Login
-                    </Link>
-
+                    Already have an account?{" "}
+                    <Link to={`/login?role=${role}`}>Login</Link>
                 </p>
 
-
-                {/* Back */}
-
-                <Link
-                    to="/roles"
-                    className="back-link"
-                >
+                <Link to="/roles" className="back-link">
                     ← Choose another role
                 </Link>
-
             </div>
-
         </div>
     );
 }

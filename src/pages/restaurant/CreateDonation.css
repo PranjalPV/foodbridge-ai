@@ -19,9 +19,7 @@
     font-size: 14px;
 }
 
-
 /* Form Card */
-
 .donation-form-card {
     background: white;
     border: 1px solid #e0e9e3;
@@ -29,9 +27,7 @@
     padding: 30px;
 }
 
-
 /* Form */
-
 .form-group {
     margin-bottom: 20px;
 }
@@ -49,18 +45,14 @@
 .form-group textarea {
     width: 100%;
     box-sizing: border-box;
-
     padding: 12px 14px;
-
     border: 1px solid #d5e2da;
     border-radius: 8px;
-
     font-size: 14px;
     font-family: inherit;
-
     outline: none;
     background: white;
-    color: #718078;
+    color: #1f2937;
 }
 
 .form-group textarea {
@@ -87,42 +79,261 @@
     font-size: 11px;
 }
 
+/* Vision Upload Section */
+.vision-upload-section {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border: 1.5px dashed #10b981;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
 
-/* AI Notice */
-
-.ai-notice {
+.vision-header {
     display: flex;
-    gap: 15px;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
 
-    background: #f4faf5;
-    border: 1px solid #dce9e1;
+.vision-icon {
+    font-size: 26px;
+}
 
-    padding: 18px;
-    border-radius: 10px;
+.vision-header strong {
+    color: #065f46;
+    font-size: 15px;
+    display: block;
+}
 
+.vision-header p {
+    margin: 4px 0 0;
+    color: #047857;
+    font-size: 12.5px;
+}
+
+.vision-dropzone {
+    display: flex;
+    gap: 12px;
+    align-items: center;
     margin-top: 10px;
-    margin-bottom: 25px;
 }
 
-.ai-notice-icon {
-    font-size: 25px;
+.upload-trigger-btn {
+    background: #10b981;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.ai-notice strong {
-    color: #18352a;
-    font-size: 14px;
+.upload-trigger-btn:hover {
+    background: #059669;
 }
 
-.ai-notice p {
-    margin: 6px 0 0;
-    color: #718078;
+.scan-sample-btn {
+    background: white;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.scan-sample-btn:hover:not(:disabled) {
+    background: #e6fffa;
+}
+
+.image-preview-box {
+    margin-top: 15px;
+    max-width: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #a7f3d0;
+}
+
+.image-preview-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.vision-scanning-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    color: #047857;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #a7f3d0;
+    border-top-color: #059669;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.ai-inspection-results {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.inspection-tag {
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #d1fae5;
     font-size: 12px;
-    line-height: 1.6;
+    color: #065f46;
 }
 
+/* RAG Preview */
+.ai-rag-preview {
+    display: flex;
+    gap: 12px;
+    background: #fefce8;
+    border: 1px solid #fef08a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+}
 
-/* Buttons */
+.rag-icon {
+    font-size: 22px;
+}
 
+.rag-content strong {
+    color: #854d0e;
+    font-size: 13.5px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.rag-content p {
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    color: #713f12;
+}
+
+.rag-citation {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: #a16207;
+}
+
+/* Urgency badges */
+.urgency-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 6px;
+}
+
+.urgency-badge.CRITICAL {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.urgency-badge.SAFE {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+/* Success Banner */
+.ai-success-banner {
+    display: flex;
+    gap: 16px;
+    background: #ecfdf5;
+    border: 1.5px solid #10b981;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success-icon {
+    font-size: 32px;
+}
+
+.success-body h3 {
+    margin: 0 0 6px;
+    color: #065f46;
+}
+
+.success-body p {
+    margin: 0 0 12px;
+    color: #047857;
+    font-size: 13.5px;
+}
+
+.match-card {
+    background: white;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+}
+
+.match-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #059669;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.match-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    color: #111827;
+}
+
+.match-score {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.match-reason {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #4b5563;
+}
+
+.new-donation-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Actions */
 .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -131,30 +342,30 @@
 
 .cancel-btn {
     padding: 12px 20px;
-
     background: white;
     color: #607069;
-
     border: 1px solid #d5e2da;
     border-radius: 8px;
-
     font-weight: bold;
     cursor: pointer;
 }
 
 .submit-donation-btn {
-    padding: 12px 20px;
-
-    background: #35a066;
+    padding: 12px 24px;
+    background: #10b981;
     color: white;
-
     border: none;
     border-radius: 8px;
-
     font-weight: bold;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
-.submit-donation-btn:hover {
-    background: #287e4f;
+.submit-donation-btn:hover:not(:disabled) {
+    background: #059669;
+}
+
+.submit-donation-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
