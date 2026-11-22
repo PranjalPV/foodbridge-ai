@@ -268,7 +268,7 @@ function RestaurantDashboard() {
                         </div>
 
                         <p>
-                            All active donations comply with FSSAI Schedule I hot-holding standards ($\ge 60^\circ\text{C}$) and the 2-Hour/4-Hour emergency rescue protocol.
+                            All active donations comply with FSSAI Schedule I hot-holding standards (≥ 60°C) and the 2-Hour/4-Hour emergency rescue protocol.
                         </p>
 
                         <Link to="/dashboard/restaurant/create-donation" className="action-btn-link">
