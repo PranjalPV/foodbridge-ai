@@ -41,7 +41,7 @@
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/jyoeetaJoy/foodbridge-ai.git
+git clone https://github.com/PranjalPV/foodbridge-ai.git
 cd foodbridge-ai
 
 # Install frontend deps

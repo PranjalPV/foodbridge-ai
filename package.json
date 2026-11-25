@@ -28,7 +28,7 @@
   "description": "FoodBridge AI - Smart Food Waste Redistribution Platform",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jyoeetaJoy/foodbridge-ai.git"
+    "url": "git+https://github.com/PranjalPV/foodbridge-ai.git"
   },
   "keywords": [
     "food-rescue",
