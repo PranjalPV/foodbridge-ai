@@ -14,8 +14,17 @@ function MyRequests() {
                 if (res.ok) {
                     const data = await res.json();
                     if (data.success && data.data) {
-                        setRequests(data.data);
-                        return;
+                        // Filter donations that have been claimed or in delivery
+                        const claimedList = data.data.filter(d => 
+                            d.status === "CLAIMED" || 
+                            d.status === "IN_TRANSIT" || 
+                            d.status === "DELIVERED" || 
+                            d.status === "ASSIGNED"
+                        );
+                        if (claimedList.length > 0) {
+                            setRequests(claimedList);
+                            return;
+                        }
                     }
                 }
             } catch (err) {
@@ -148,7 +157,11 @@ function MyRequests() {
                                 fontSize: "12px",
                                 fontWeight: "bold"
                             }}>
-                                {req.status === "DELIVERED" ? "✓ Delivered & Confirmed" : `🚴 En Route (${req.eta || "15 mins"})`}
+                                {req.status === "DELIVERED" 
+                                    ? "✓ Delivered & Confirmed" 
+                                    : req.status === "IN_TRANSIT" 
+                                    ? `🚴 En Route (${req.eta || "15 mins"})` 
+                                    : `📦 Assigned to Volunteer (${req.eta || "Preparing Pickup"})`}
                             </span>
 
                             <Link

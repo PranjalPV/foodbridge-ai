@@ -156,8 +156,16 @@ function matchDonationWithNGOs({ donationLat, donationLng, quantity, foodType, c
         }
 
         // Capacity score (0 to 30 pts)
-        const capacityRatio = Math.min(1.0, quantity / (ngo.dailyNeed || 50));
-        const capacityScore = 30 * capacityRatio;
+        // Optimal match: NGO daily demand absorbs donation without severe under-utilization or waste
+        let capacityScore = 30;
+        const dailyCapacity = ngo.dailyNeed || 50;
+        if (quantity <= dailyCapacity) {
+            capacityScore = 30 * (quantity / dailyCapacity);
+        } else {
+            // Over-capacity penalty: shelter cannot absorb excess, causing secondary spoilage
+            const overflowFactor = quantity / dailyCapacity;
+            capacityScore = Math.max(5, Math.round(30 / overflowFactor));
+        }
 
         const totalMatchScore = Math.round(distanceScore + dietaryScore + capacityScore);
 

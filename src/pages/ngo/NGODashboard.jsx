@@ -1,8 +1,9 @@
 import DashboardLayout from "../../layouts/DashboardLayout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NGODashboard.css";
 
 function NGODashboard() {
+  const navigate = useNavigate();
   return (
     <DashboardLayout
       title="NGO Dashboard"
@@ -86,7 +87,7 @@ function NGODashboard() {
               <span className="urgent-tag">High Priority</span>
             </div>
 
-            <button className="request-btn">
+            <button className="request-btn" onClick={() => navigate("/ngo/available-food")}>
               Request
             </button>
           </div>
@@ -100,7 +101,7 @@ function NGODashboard() {
               <span className="normal-tag">Available</span>
             </div>
 
-            <button className="request-btn">
+            <button className="request-btn" onClick={() => navigate("/ngo/available-food")}>
               Request
             </button>
           </div>
@@ -114,7 +115,7 @@ function NGODashboard() {
               <span className="normal-tag">Available</span>
             </div>
 
-            <button className="request-btn">
+            <button className="request-btn" onClick={() => navigate("/ngo/available-food")}>
               Request
             </button>
           </div>

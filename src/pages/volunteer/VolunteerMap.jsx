@@ -1,15 +1,24 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import DashboardLayout from "../../layouts/DashboardLayout";
+import { API_BASE_URL } from "../../config/api";
 import "./VolunteerMap.css";
 
 function VolunteerMap() {
+    const location = useLocation();
+    const activePickup = location.state?.pickup || null;
+
     const mapRef = useRef(null);
     const mapInstance = useRef(null);
+
+    const servings = activePickup?.quantity || 45;
+    const initialCo2 = Number((servings * 0.4 * 2.5).toFixed(1));
+
     const [ecoMetrics, setEcoMetrics] = useState({
-        co2AvoidedKg: 50,
-        methaneAvoidedKg: 5.0,
-        waterConservedLiters: 7500,
-        carKmSaved: 238
+        co2AvoidedKg: initialCo2,
+        methaneAvoidedKg: Number((servings * 0.4 * 0.25).toFixed(1)),
+        waterConservedLiters: servings * 150,
+        carKmSaved: Math.round(initialCo2 / 0.21)
     });
     const [routeStatus, setRouteStatus] = useState("Active Pickup");
     const [gpsActive, setGpsActive] = useState(false);
@@ -130,8 +139,8 @@ function VolunteerMap() {
                     <div className="route-info-header">
                         <div>
                             <span className="active-route-badge">AI OPTIMIZED ROUTE</span>
-                            <h2>Fresh Vegetable Biryani</h2>
-                            <p className="route-qty">45 servings • Airtight Containers</p>
+                            <h2>{activePickup?.foodName || "Fresh Vegetable Biryani"}</h2>
+                            <p className="route-qty">{servings} servings • Airtight Containers</p>
                         </div>
                     </div>
 
@@ -139,8 +148,8 @@ function VolunteerMap() {
                         <div className="step-item">
                             <div className="step-marker pickup">🏪</div>
                             <div>
-                                <strong>Pickup: Royal Spice Restaurant</strong>
-                                <span>Hazratganj, Lucknow • Prepared 1.5h ago</span>
+                                <strong>Pickup: {activePickup?.restaurantName || "Royal Spice Restaurant"}</strong>
+                                <span>{activePickup?.address || activePickup?.pickupAddress || "Hazratganj, Lucknow"}</span>
                             </div>
                         </div>
 
@@ -149,8 +158,8 @@ function VolunteerMap() {
                         <div className="step-item">
                             <div className="step-marker delivery">🏢</div>
                             <div>
-                                <strong>Delivery: Asha Children Home</strong>
-                                <span>Gomti Nagar, Lucknow • 60 Beneficiaries</span>
+                                <strong>Delivery: {activePickup?.destinationNGO || "Asha Children Home"}</strong>
+                                <span>Gomti Nagar, Lucknow • Beneficiaries</span>
                             </div>
                         </div>
                     </div>
@@ -192,15 +201,39 @@ function VolunteerMap() {
                     <div className="route-actions">
                         <button
                             className="pickup-done-btn"
-                            onClick={() => setRouteStatus("Food Collected! En route to NGO")}
+                            onClick={async () => {
+                                setRouteStatus("Food Collected! En route to NGO");
+                                if (activePickup?.id) {
+                                    try {
+                                        await fetch(`${API_BASE_URL}/api/donations/${activePickup.id}/status`, {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ status: "IN_TRANSIT" })
+                                        });
+                                    } catch (e) {
+                                        console.log("Status update offline:", e.message);
+                                    }
+                                }
+                            }}
                         >
                             ✓ Mark Picked Up
                         </button>
                         <button
                             className="delivery-done-btn"
-                            onClick={() => {
+                            onClick={async () => {
                                 setRouteStatus("Delivered! 🎉 Impact Recorded");
-                                alert("Delivery completed! 50 kg CO₂e saved and logged in your volunteer impact profile.");
+                                if (activePickup?.id) {
+                                    try {
+                                        await fetch(`${API_BASE_URL}/api/donations/${activePickup.id}/status`, {
+                                            method: "POST",
+                                            headers: { "Content-Type": "application/json" },
+                                            body: JSON.stringify({ status: "DELIVERED" })
+                                        });
+                                    } catch (e) {
+                                        console.log("Status update offline:", e.message);
+                                    }
+                                }
+                                alert(`Delivery completed! ${ecoMetrics.co2AvoidedKg} kg CO₂e saved and logged in your volunteer profile.`);
                             }}
                         >
                             🎉 Confirm Delivery

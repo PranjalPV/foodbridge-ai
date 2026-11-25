@@ -11,8 +11,8 @@ async function callGemini({ prompt, imageBase64 = null, mimeType = "image/jpeg",
         return null;
     }
 
-    // gemini-3.8-flash
-    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const model = process.env.GEMINI_MODEL || "gemini-1.5-flash";
+    const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
 
     const parts = [];
 

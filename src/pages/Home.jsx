@@ -11,7 +11,7 @@ function Home() {
 
                 <div className="logo">
                     <span>🌱</span>
-                    FoodBridge <strong class="ai">AI</strong>
+                    FoodBridge <strong className="ai">AI</strong>
                 </div>
 
                 <div className="nav-links">

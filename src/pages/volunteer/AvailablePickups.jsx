@@ -62,9 +62,18 @@ function AvailablePickups() {
         fetchPickups();
     }, []);
 
-    const handleAcceptPickup = (pickup) => {
+    const handleAcceptPickup = async (pickup) => {
+        try {
+            await fetch(`${API_BASE_URL}/api/donations/${pickup.id}/status`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status: "IN_TRANSIT", volunteerName: "Arjun Singh" })
+            });
+        } catch (e) {
+            console.log("Local offline accept:", e.message);
+        }
         alert(`🚴 Pickup Accepted for ${pickup.foodName}! Opening Live Navigation Map.`);
-        navigate("/map");
+        navigate("/map", { state: { pickup } });
     };
 
     let filtered = pickups.filter((p) => {

@@ -1,8 +1,9 @@
 import DashboardLayout from "../../layouts/DashboardLayout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./VolunteerDashboard.css";
 
 function VolunteerDashboard() {
+    const navigate = useNavigate();
     return (
         <DashboardLayout
             title="Volunteer Dashboard"
@@ -143,7 +144,7 @@ function VolunteerDashboard() {
 
                         </div>
 
-                        <button className="accept-pickup-btn">
+                        <button className="accept-pickup-btn" onClick={() => navigate("/volunteer/pickups")}>
                             Accept
                         </button>
 
@@ -174,7 +175,7 @@ function VolunteerDashboard() {
 
                         </div>
 
-                        <button className="accept-pickup-btn">
+                        <button className="accept-pickup-btn" onClick={() => navigate("/volunteer/pickups")}>
                             Accept
                         </button>
 
@@ -205,7 +206,7 @@ function VolunteerDashboard() {
 
                         </div>
 
-                        <button className="accept-pickup-btn">
+                        <button className="accept-pickup-btn" onClick={() => navigate("/volunteer/pickups")}>
                             Accept
                         </button>
 
